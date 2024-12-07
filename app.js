@@ -5,9 +5,12 @@ const init = require('./utils/init');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-init();
+app.get('/',(req,res)=>{
+    init()
+    return res.status(200).json({ message : "Dummy data initialized"})
+})
 
-app.use('/api/data', dataRoutes);
+app.use('/data', dataRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -11,19 +11,32 @@ router.get('/', async (req, res) => {
     const { sortBy, filterBy, value, order = 'asc' } = req.query;
     let data = await getData();
 
+    if (filterBy && !value) {
+      return res.status(400).json({ error: 'Please provide a value to filter in query' });
+    }
+
+    if ((filterBy && !validFields.includes(filterBy)) && (sortBy && !validFields.includes(sortBy))) {
+      return res.status(400).json({
+        error: `Invalid filter field: ${filterBy} and sort field: ${sortBy}. Valid fields are: ${validFields.join(', ')}`
+      });
+    }
+
     if (filterBy && !validFields.includes(filterBy)) {
-      return res.status(400).json({ error: `Invalid filter field: ${filterBy}. Valid fields are: ${validFields.join(', ')}` });
+      return res.status(400).json({
+        error: `Invalid filter field: ${filterBy}. Valid fields are: ${validFields.join(', ')}`
+      });
     }
 
     if (sortBy && !validFields.includes(sortBy)) {
-      return res.status(400).json({ error: `Invalid sort field: ${sortBy}. Valid fields are: ${validFields.join(', ')}` });
+      return res.status(400).json({
+        error: `Invalid sort field: ${sortBy}. Valid fields are: ${validFields.join(', ')}`
+      });
     }
 
-    if(filterBy && value && sortBy){
-        filteredData = await filterData(data, filterBy, value); 
-        sortedData = await sortData(filteredData, sortBy, order); 
-
-        return res.status(200).json(sortedData)
+    if (filterBy && value && sortBy) {
+      const filteredData = await filterData(data, filterBy, value);
+      const sortedData = await sortData(filteredData, sortBy, order);
+      return res.status(200).json(sortedData);
     }
 
     if (filterBy && value) {
@@ -35,10 +48,10 @@ router.get('/', async (req, res) => {
     }
 
     res.status(200).json(data);
-  } catch (error) {
+   } catch (error) {
     console.error('Error processing request:', error.message);
     res.status(500).json({ error: 'Internal server error' });
-  }
+   }
 });
 
 module.exports = router;
