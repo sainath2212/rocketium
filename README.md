@@ -7,6 +7,9 @@ This API allows users to fetch data with filtering and sorting functionalities. 
 ## **Base URL**
 `http://localhost:3000`
 
+## ** Hosted URL**
+`https://rocketium.vercel.app/`
+
 ---
 
 ## **Endpoints**
