@@ -69,7 +69,7 @@ This API allows users to fetch data with filtering and sorting functionalities. 
       "id": "ENTOCR13RSCLZ6KU",
       "bio": "Aliquam sollicitudin ante ligula, eget malesuada nibh efficitur et.",
       "version": 1.88
-    }...
+    },...
   ]
   ```
 
@@ -85,7 +85,7 @@ This API allows users to fetch data with filtering and sorting functionalities. 
       "id": "V59OF92YF627HFY0",
       "bio": "Donec lobortis eleifend condimentum. Cras dictum dolor lacinia lectus vehicula rutrum.",
       "version": 6.1
-    }...
+    },...
   ]
   ```
 
@@ -108,7 +108,7 @@ This API allows users to fetch data with filtering and sorting functionalities. 
       "id": "ENTOCR13RSCLZ6KU",
       "bio": "Aliquam sollicitudin ante ligula, eget malesuada nibh efficitur et.",
       "version": 1.88
-    }...
+    },...
   ]
   ```
 
